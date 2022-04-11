@@ -1,0 +1,83 @@
+#include <string>
+#include <iostream>
+#include <vector>
+using namespace std;
+
+class employee
+{
+    private:
+
+        string organization;
+        string position;
+        double experience;
+        string name;
+        bool gender;  // 0 - male, 1 - female
+        int age;
+        double salary;
+        static int count;
+
+    public:
+
+    employee(string organization_, string position_, double experience_, double salary_): organization{organization_}, position{position_}, experience{experience_}, salary{salary_}
+    {
+        ++count;
+    }
+    employee(string name_, bool gender_, int age_) : name{ name_ }, age{ age_ }, gender {gender_}
+    {
+        ++count;
+    }
+    employee()
+    {
+        ++count;
+    }
+    ~employee() 
+    {
+        count--;
+    }
+
+    static int get_count () { return count; }
+
+    string get_organization() const { return organization; }
+    string get_position() const { return position; }
+    double get_experience() const { return experience; }
+    string get_name() const { return name; }
+    bool get_gender() { return gender; }
+    int get_age() const { return age; }
+    double get_salary() const { return salary; }
+
+    void set_organization(string organization_) {organization = organization_; }
+    void set_position(string position_) { position = position_; }
+    void set_experience(double experience_) { experience = experience_; }
+    void set_name(string name_) { name = name_; }
+    void set_gender(char gender_) { gender = gender_; }
+    void set_age(int age_) { age = age_; }
+    void set_salary(double salary_) { salary = salary_; }
+};
+
+bool operator == (employee &s1_, employee &s2_)
+{
+    double accuracy = 0.0001;
+
+    if ((s1_.get_experience() - s2_.get_experience()) < accuracy and 
+        (s1_.get_experience() - s2_.get_experience()) > -accuracy)
+            return true;
+
+    return false;
+}
+
+bool operator < (employee &s1_, employee &s2_)
+{
+    return (s1_.get_experience() < s2_.get_experience());
+}
+
+bool operator > (employee &s1_, employee &s2_)
+{
+    return (s1_.get_experience() > s2_.get_experience());
+}
+
+int employee::count = 0;
+
+int main ()
+{
+    std::vector <employee> a;
+}
