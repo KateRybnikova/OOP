@@ -1,0 +1,60 @@
+#include <cstring>
+#include <iostream>
+namespace hw1
+{
+class STUDENT
+{
+    char name[25];
+    int age;
+    float grade;
+
+    public:
+
+    STUDENT (const char name_[], int age_, float grade_ = 0.0): age{age_}, grade{grade_}
+    {
+        for (int i = 0; i < 25; ++i)
+            name[i] = name_[i];
+    }
+
+    void show () 
+    { 
+        std::cout << "name: " << name << std::endl;
+        std::cout << "age:"   << age  << std::endl;
+        std::cout << "grade:" << grade << std::endl; 
+    }
+
+    const char* GetName () const { return name; }
+
+    int GetAge () const { return age; }
+
+    float GetGrade () const { return grade; }
+
+    void SetName (const char* name_)
+    {
+        for (int i = 0; i < 25; ++i)
+            name[i] = name_[i];
+    }
+
+    void SetAge (int age_) { age = age_; }
+
+    void SetGrade (float grade_) { grade = grade_; }
+
+    void Set (const char* name_, int age_, float grade_)
+    {
+        SetName  (name_);
+        SetAge   (age_);
+        SetGrade (grade_);
+    }
+};  
+}
+
+using namespace hw1;
+
+int main ()
+{
+    STUDENT s1{};
+
+    s1.Set ("katya", 18, 11.3);
+
+    s1.show();
+}
