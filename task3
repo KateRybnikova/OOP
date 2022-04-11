@@ -52,8 +52,8 @@ class cathalog
 
     public:
 
-    void add_book (cathalog_book& new_book) //TODO: учитывать одинаковые книги
-    {                                       //TODO: придумать как выбрать ID (не может быть нулевого ID)
+    void add_book (cathalog_book& new_book) 
+    {                                       
         books.push_back (new_book); 
 
         // books[books.size() - 1].picked.clear(); //TODO: подумать насчет очистки списка читателей
